@@ -1,0 +1,25 @@
+🌱 Seeding sample data...
+
+1️⃣ Creating Sample 1: Waste Collection (Should VERIFY)
+   ✅ Complaint ingested: {'complaint_id': 'COMP-SAMPLE-001', 'media_id': '7997bcc3-c8b1-43f6-bada-deb55b63f586', 'status': 'ingested'}
+   ✅ Proof ingested: {'proof_id': 'PROOF-SAMPLE-001', 'status': 'ingested', 'recycled_flag': False}
+   🔍 Running verification for PROOF-SAMPLE-001...
+Error verifying proof PROOF-SAMPLE-001: Proof PROOF-SAMPLE-001 not found
+Traceback (most recent call last):
+  File "/app/backend/seed_sample_data.py", line 190, in <module>
+    asyncio.run(seed_data())
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/backend/seed_sample_data.py", line 93, in seed_data
+    verification1 = await verification_pipeline.verify_proof(proof_1_id)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/backend/verification_pipeline.py", line 241, in verify_proof
+    raise ValueError(f"Proof {proof_id} not found")
+ValueError: Proof PROOF-SAMPLE-001 not found
