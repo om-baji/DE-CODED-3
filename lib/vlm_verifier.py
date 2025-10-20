@@ -1,15 +1,15 @@
 import os
 import json
-import base64
 import openai
-import logging
 from typing import Dict, Any
+from settings import OPENAI_API_KEY
+from utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class VLMVerifier:
     def __init__(self):
-        self.api_key = os.environ.get('OPENAI_API_KEY')
+        self.api_key = OPENAI_API_KEY
         if not self.api_key:
             raise ValueError("OPENAI_API_KEY not found in environment")
         self.client = openai.OpenAI(api_key=self.api_key)

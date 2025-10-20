@@ -2,12 +2,12 @@ import numpy as np
 from PIL import Image
 from io import BytesIO
 import cv2
-import logging
 from tensorflow import keras
 from keras.applications import Xception
 from keras.applications.xception import preprocess_input
+from utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class ManipulationDetector:
     def __init__(self):

@@ -3,14 +3,15 @@ import base64
 from io import BytesIO
 from PIL import Image
 import openai
-import logging
+from settings import OPENAI_API_KEY
+from utils.logger import get_logger
 import numpy as np
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class EmbeddingService:
     def __init__(self):
-        self.api_key = os.environ.get('OPENAI_API_KEY')
+        self.api_key = OPENAI_API_KEY
         if not self.api_key:
             raise ValueError("OPENAI_API_KEY not found in environment")
         openai.api_key = self.api_key

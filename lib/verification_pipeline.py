@@ -5,14 +5,15 @@ from datetime import datetime
 from typing import Dict, Any
 from io import BytesIO
 
-from pinecone_client import pinecone_manager
-from embeddings import embedding_service
-from image_processor import image_processor
-from manipulation_detector import manipulation_detector
-from vlm_verifier import vlm_verifier
-from scoring_engine import scoring_engine
+from database.pinecone import pinecone_manager
+from services.embedding import embedding_service
+from . import image_processor
+from . import manipulation_detector
+from . import vlm_verifier
+from services.scoring import scoring_engine
+from utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class VerificationPipeline:
     def __init__(self):

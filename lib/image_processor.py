@@ -2,10 +2,10 @@ import imagehash
 from PIL import Image
 from io import BytesIO
 import base64
-import logging
 import numpy as np
+from utils.logger import get_logger
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 class ImageProcessor:
     def __init__(self):
